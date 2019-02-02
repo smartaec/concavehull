@@ -66,7 +66,7 @@ def plotPath(dataset, path):
     plt.axis([min(dataset[:,0])-0.5,max(dataset[:,0])+0.5,min(dataset[:,1])-0.5,
         max(dataset[:,1])+0.5])
     plt.axis('off')
-    plt.savefig('./doc/figure_1.png', bbox_inches='tight')
+    #plt.savefig('./doc/figure_1.png', bbox_inches='tight')
     plt.show()
 
 def removePoint(dataset, point):
@@ -116,7 +116,7 @@ def concaveHull(dataset, k):
                             hull[step-1-j-1],hull[step-j-1])
                     j=j+1
         if ( its==True ):
-            print "all candidates intersect -- restarting with k = ",k+1
+            #print "all candidates intersect -- restarting with k = ",k+1
             return concaveHull(dataset,k+1)
         prevPoint = currentPoint
         currentPoint = cPoints[i-1]
@@ -128,10 +128,10 @@ def concaveHull(dataset, k):
     p = Path(hull)
     pContained = p.contains_points(dataset, radius=0.0000000001)
     if (not pContained.all()):
-        print "not all points of dataset contained in hull -- restarting with k = ",k+1
+        #print "not all points of dataset contained in hull -- restarting with k = ",k+1
         return concaveHull(dataset, k+1)
 
-    print "finished with k = ",k
+    #print "finished with k = ",k
     return hull
 
 
